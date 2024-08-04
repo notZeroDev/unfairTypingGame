@@ -57,7 +57,7 @@ const checkLetters = function (e) {
     });
     if (winning) {
       scroeSpan.textContent = ++score;
-      if (score === 2) {
+      if (score === 5) {
         stopGame();
         showWinning();
       } else init();

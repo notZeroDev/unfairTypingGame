@@ -21,12 +21,12 @@ h1 {
 }
 /* Game style */
 .container {
+  background-color: #272829;
   color: #646464;
   width: 90vw;
   min-height: 60vh;
   border-radius: 0.6yu5rem;
   padding: 0.5rem 2rem;
-  /* margin: 5rem 0; */
   font-size: 3rem;
   display: grid;
   grid-template-rows: 1fr 4fr 1fr;
