@@ -1,0 +1,2 @@
+# unfairTypingGame
+js application
