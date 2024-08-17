@@ -63,19 +63,29 @@ textarea:focus{
 
 
 /* Message style */
-.overlay{
-  position: absolute;
-  top: 0;
-  left: 0;
+.message-container{
+  position:absolute;
+  opacity: 0;
   height: 100vh;
   width: 100vw;
-  background-color: #5e5e5e;
-  opacity: 90%;
+  top:0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: show-message 0.75s ease-in-out 0.5s forwards;
+  
 }
-.message{
+.message-container .overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #5e5e5e;
+  opacity: 90%;
+}
+.message-container .message{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,13 +94,29 @@ textarea:focus{
   height:40vh;
   width: 80vw;
   background-color: black;
+  
   color: aliceblue;
   border: 5px solid aliceblue;
   border-radius: 2rem;
+  text-transform: capitalize;
+  z-index: 1;
 }
 
 
 /* global rules */
 .hidden{
   display:  none;
+  animation: show-message 1s;
+}
+
+
+/* animations */
+@keyframes show-message {
+  from{
+    opacity: 0;
+  }
+  to{
+
+    opacity: 100%;
+  }
 }

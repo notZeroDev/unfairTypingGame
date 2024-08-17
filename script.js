@@ -5,6 +5,7 @@ const timerHead = document.querySelector(".timer");
 const quote = document.querySelector(".container p");
 const textArea = document.querySelector("textarea");
 const scroeSpan = container.querySelector("span");
+const messageContainer = document.querySelector(".message-container");
 const overlay = document.querySelector(".overlay");
 const message = document.querySelector(".message");
 let quoteLetters,
@@ -28,14 +29,13 @@ async function renderNewQuote() {
   quoteLetters = quote.querySelectorAll("span");
 }
 
-
 const checkLetters = function (e) {
   // checks if the game started or not to start the counter
   if (!gameRunning) {
     gameRunning = true;
     timerCounter = setInterval(function () {
       if (timer > 0) timerHead.textContent = --timer;
-      else stopGame();
+      else endGame(false);
     }, 1000);
   }
   if (gameRunning) {
@@ -57,9 +57,8 @@ const checkLetters = function (e) {
     });
     if (winning) {
       scroeSpan.textContent = ++score;
-      if (score === 5) {
-        stopGame();
-        showWinning();
+      if (score === 1) {
+        endGame(true);
       } else init();
     }
   }
@@ -73,32 +72,31 @@ const init = function () {
   renderNewQuote();
 };
 
-
-
 const resetCopy = (e) => {
   e.preventDefault();
   textArea.value = "Are You Serious?";
 };
-const showWinning = function () {
-  overlay.classList.remove("hidden");
+const showMessage = function (messageText) {
+  message.innerHTML = messageText;
+  messageContainer.classList.remove("hidden");
 };
 
 const stopGame = function () {
   clearInterval(timerCounter);
   textArea.setAttribute("disabled", "disabled");
 };
-
+const endGame = function (isWinning) {
+  stopGame();
+  if (isWinning) showMessage("🎉Congratulations you have won");
+  else showMessage("Hard Luck<br>press tab to restart");
+};
 
 // prevent pasting
 textArea.addEventListener("paste", resetCopy);
 textArea.addEventListener("dragover", resetCopy);
 
-
-
 // input event
 textArea.addEventListener("input", checkLetters);
-
-
 
 // restart game on tab
 document.addEventListener("keydown", (e) => {
