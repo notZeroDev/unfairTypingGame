@@ -34,8 +34,9 @@ const checkLetters = function (e) {
     gameRunning = true;
     inputAvailable = true;
     timerCounter = setInterval(function () {
-      if (timer > 0) timerHead.textContent = --timer;
-      else endGame(false);
+      timer--;
+      timerHead.textContent = timer;
+      if (timer === 0) endGame(false);
     }, 1000);
   }
   if (gameRunning) {
