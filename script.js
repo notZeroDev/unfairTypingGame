@@ -8,6 +8,7 @@ const scroeSpan = container.querySelector("span");
 const messageContainer = document.querySelector(".message-container");
 const overlay = document.querySelector(".overlay");
 const message = document.querySelector(".message");
+let inputLetters = [];
 let quoteLetters,
   timer = 60,
   timerCounter,
@@ -40,22 +41,22 @@ const checkLetters = function (e) {
   }
   if (gameRunning) {
     let winning = true;
-    const inputChars = textArea.value.split("");
     quoteLetters.forEach((quoteChar, index) => {
-      if (!inputChars[index]) {
+      if (!inputLetters[index]) {
         quoteChar.classList.remove("incorrect");
         quoteChar.classList.remove("correct");
         winning = false;
-      } else if (quoteChar.textContent === inputChars[index]) {
+      } else if (quoteChar.textContent === inputLetters[index]) {
         quoteChar.classList.add("correct");
         quoteChar.classList.remove("incorrect");
-      } else if (quoteChar.textContent !== inputChars[index]) {
+      } else if (quoteChar.textContent !== inputLetters[index]) {
         quoteChar.classList.add("incorrect");
         quoteChar.classList.remove("correct");
         winning = false;
       }
     });
     if (winning) {
+      inputLetters = [];
       scroeSpan.textContent = ++score;
       if (score === 5) {
         endGame(true);
@@ -96,14 +97,21 @@ textArea.addEventListener("paste", resetCopy);
 textArea.addEventListener("dragover", resetCopy);
 
 // input event
-textArea.addEventListener("input", checkLetters);
+// textArea.addEventListener("input", checkLetters);
 
 // restart game on tab
 document.addEventListener("keydown", (e) => {
   if (e.key === "Tab") {
     e.preventDefault();
     window.location.reload();
+    return;
   }
+  if (e.key === "Backspace") {
+    inputLetters.pop();
+  } else if (e.key.length === 1) {
+    inputLetters.push(e.key);
+  }
+  checkLetters();
 });
 
 // start game
