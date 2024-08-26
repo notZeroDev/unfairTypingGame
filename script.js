@@ -1,9 +1,8 @@
 "use strict";
 const RANDOM_QUOTE_API_URL = "http://api.quotable.io/random";
-const container = document.querySelector(".container");
 const timerHead = document.querySelector(".timer");
-const quote = document.querySelector(".container p");
-const scroeSpan = container.querySelector("span");
+const quote = document.querySelector("p");
+const scroeSpan = document.querySelector(".score span");
 const messageContainer = document.querySelector(".message-container");
 const overlay = document.querySelector(".overlay");
 const message = document.querySelector(".message");
