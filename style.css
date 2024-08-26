@@ -7,6 +7,7 @@ body {
   grid-template-rows: 3fr 10fr 1fr;
   grid-column: auto;
   justify-content: center;
+  place-items: center;
   overflow: hidden;
 }
 *::selection {
@@ -20,34 +21,16 @@ h1 {
   margin: 25px;
 }
 /* Game style */
-.container {
+p {
   background-color: #272829;
   color: #646464;
   width: 90vw;
-  min-height: 60vh;
-  border-radius: 0.6yu5rem;
+  height: -webkit-fill-available;
+
   padding: 0.5rem 2rem;
   font-size: 3rem;
-  display: grid;
-  grid-template-rows: 1fr 4fr 1fr;
-}
-.container p {
   margin-left: 5px;
   width: 90%;
-}
-textarea {
-  padding: 1rem;
-  background: transparent;
-  max-height: 15rem;
-  resize: none;
-  width: -webkit-fill-available;
-  border: 3px solid #646464;
-  outline: none;
-  font-size: 2rem;
-  border-radius: 10px;
-}
-textarea:focus {
-  border: 3px solid aliceblue;
 }
 .correct {
   color: aliceblue;
@@ -59,6 +42,8 @@ textarea:focus {
 .score {
   color: aliceblue;
   text-align: center;
+  font-size: 3rem;
+  padding-bottom: 2vh;
 }
 
 /* Message style */
