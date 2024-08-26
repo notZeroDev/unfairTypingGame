@@ -3,7 +3,6 @@ const RANDOM_QUOTE_API_URL = "http://api.quotable.io/random";
 const container = document.querySelector(".container");
 const timerHead = document.querySelector(".timer");
 const quote = document.querySelector(".container p");
-const textArea = document.querySelector("textarea");
 const scroeSpan = container.querySelector("span");
 const messageContainer = document.querySelector(".message-container");
 const overlay = document.querySelector(".overlay");
@@ -23,7 +22,6 @@ function getRandomQuote() {
 async function renderNewQuote() {
   quote.textContent = "";
   const quoteOnline = await getRandomQuote();
-  textArea.value = "";
   quoteOnline.split("").forEach((character) => {
     quote.insertAdjacentHTML("beforeend", `<span>${character}</span>`);
   });
@@ -68,15 +66,9 @@ const checkLetters = function (e) {
 // intial state
 const init = function () {
   timerHead.textContent = timer;
-  textArea.textContent = "";
-  textArea.focus();
   renderNewQuote();
 };
 
-const resetCopy = (e) => {
-  e.preventDefault();
-  textArea.value = "Are You Serious?";
-};
 const showMessage = function (messageText) {
   message.innerHTML = messageText;
   messageContainer.classList.remove("hidden");
@@ -84,7 +76,6 @@ const showMessage = function (messageText) {
 
 const stopGame = function () {
   clearInterval(timerCounter);
-  textArea.setAttribute("disabled", "disabled");
 };
 const endGame = function (isWinning) {
   stopGame();
@@ -92,14 +83,7 @@ const endGame = function (isWinning) {
   else showMessage("Hard Luck<br>press tab to restart");
 };
 
-// prevent pasting
-textArea.addEventListener("paste", resetCopy);
-textArea.addEventListener("dragover", resetCopy);
-
 // input event
-// textArea.addEventListener("input", checkLetters);
-
-// restart game on tab
 document.addEventListener("keydown", (e) => {
   if (e.key === "Tab") {
     e.preventDefault();
