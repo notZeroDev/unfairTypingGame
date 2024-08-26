@@ -11,6 +11,7 @@ let quoteLetters,
   timer = 60,
   timerCounter,
   score = 0,
+  inputAvailable = true,
   gameRunning = false;
 
 function getRandomQuote() {
@@ -31,6 +32,7 @@ const checkLetters = function (e) {
   // checks if the game started or not to start the counter
   if (!gameRunning) {
     gameRunning = true;
+    inputAvailable = true;
     timerCounter = setInterval(function () {
       if (timer > 0) timerHead.textContent = --timer;
       else endGame(false);
@@ -77,6 +79,7 @@ const stopGame = function () {
   clearInterval(timerCounter);
 };
 const endGame = function (isWinning) {
+  inputAvailable = false;
   stopGame();
   if (isWinning) showMessage("🎉Congratulations you have won");
   else showMessage("Hard Luck<br>press tab to restart");
@@ -87,11 +90,10 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Tab") {
     e.preventDefault();
     window.location.reload();
-    return;
   }
-  if (e.key === "Backspace") {
+  if (e.key === "Backspace" && inputAvailable) {
     inputLetters.pop();
-  } else if (e.key.length === 1) {
+  } else if (e.key.length === 1 && inputAvailable) {
     inputLetters.push(e.key);
   }
   checkLetters();
