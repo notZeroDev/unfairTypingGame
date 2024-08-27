@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #2c4e80;
+  background: #272829;
   height: 100vh;
   display: grid;
   grid-template-rows: 3fr 10fr 1fr;
@@ -22,15 +22,14 @@ h1 {
 }
 /* Game style */
 p {
-  background-color: #272829;
+  display: block;
+  /* background-color: #272829; */
   color: #646464;
-  width: 90vw;
+  width: 60vw;
   height: -webkit-fill-available;
-
   padding: 0.5rem 2rem;
   font-size: 3rem;
   margin-left: 5px;
-  width: 90%;
 }
 .correct {
   color: aliceblue;
