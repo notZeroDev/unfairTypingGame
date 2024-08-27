@@ -92,7 +92,7 @@ document.addEventListener("keydown", (e) => {
     e.preventDefault();
     window.location.reload();
   }
-  // if (!inputAvailable) return;
+  if (!inputAvailable) return;
 
   if (e.key === "Backspace") {
     inputLetters.pop();
