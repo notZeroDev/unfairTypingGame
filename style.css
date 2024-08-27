@@ -1,4 +1,5 @@
 body {
+  font-family: "Roboto Mono", monospace;
   margin: 0;
   padding: 0;
   background: #272829;
@@ -8,7 +9,6 @@ body {
   grid-column: auto;
   justify-content: center;
   place-items: center;
-  overflow: hidden;
 }
 *::selection {
   background-color: #646464;
@@ -23,12 +23,11 @@ h1 {
 /* Game style */
 p {
   display: block;
-  /* background-color: #272829; */
   color: #646464;
   width: 60vw;
   height: -webkit-fill-available;
   padding: 0.5rem 2rem;
-  font-size: 3rem;
+  font-size: 2rem;
   margin-left: 5px;
 }
 .correct {
@@ -76,7 +75,6 @@ p {
   height: 40vh;
   width: 80vw;
   background-color: black;
-
   color: aliceblue;
   border: 5px solid aliceblue;
   border-radius: 2rem;
