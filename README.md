@@ -5,6 +5,7 @@
 ## Credits
 
 this game was inspired by this tutorial [youtube.com](https://youtu.be/R-7eQIHRszQ?si=NWI9dy8XnTkJBwfV)
+
 game icon used from [flaticon.com](https://www.flaticon.com/free-icon/typewriter_7207564?k=1724718177680&log-in=google)
 
 ## Game Goal
