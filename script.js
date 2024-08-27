@@ -28,9 +28,9 @@ async function renderNewQuote() {
   quoteLetters = quote.querySelectorAll("span");
 }
 
-const checkLetters = function (e) {
+const checkLetters = function (inputKey) {
   // checks if the game started or not to start the counter
-  if (!gameRunning) {
+  if (!gameRunning && inputKey.length === 1) {
     gameRunning = true;
     inputAvailable = true;
     timerCounter = setInterval(function () {
@@ -92,12 +92,14 @@ document.addEventListener("keydown", (e) => {
     e.preventDefault();
     window.location.reload();
   }
-  if (e.key === "Backspace" && inputAvailable) {
+  // if (!inputAvailable) return;
+
+  if (e.key === "Backspace") {
     inputLetters.pop();
-  } else if (e.key.length === 1 && inputAvailable) {
+  } else if (e.key.length === 1) {
     inputLetters.push(e.key);
   }
-  checkLetters();
+  checkLetters(e.key);
 });
 
 // start game
