@@ -13,6 +13,9 @@ body {
   background-color: #646464;
   color: white;
 }
+.incorrect::selection {
+  color: #fc4100;
+}
 h1 {
   text-align: center;
   color: aliceblue;
